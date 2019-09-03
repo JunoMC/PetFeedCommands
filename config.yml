@@ -1,0 +1,20 @@
+Prefix: '&7[&cPetFeed&7]&r'
+
+messages:
+  help:
+  - '&7&m                                               '
+  - '&f/%cmd% help - xem thêm lệnh'
+  - '&f/{%cmd% reload - reload config'
+  - '&f/%cmd% feed {player} {amount} - hồi thức ăn cho pet'
+  - '&7&m                                               '
+  
+  no-permission: '%prefix% &cBạn không có quyền dùng lệnh này!'
+  reload-error: '%prefix% &cCó lỗi xảy ra khi reload!'
+  
+  reload-success: '%prefix% &aNạp lại config thành công'
+  player-not-found: '%prefix% &f%player%&c không online hoặc không tồn tại!'
+  
+  cmds:
+    feed-usage: '&cDùng lệnh: &f/petfeed feed {player} {amount}'
+    
+  feed-success: '%prefix% &aĐã hồi độ đói cho pet của &f%player%&a thành &e%amount%'

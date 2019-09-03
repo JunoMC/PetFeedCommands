@@ -1,0 +1,20 @@
+name: PetFeedCommands
+version: 1.0-release
+author: Juno
+website: http://junomc.xyz/
+main: xyz.juno.petfeedcommands.main.PetFeedCommands
+api-version: 1.13
+
+commands:
+  petfeed:
+    aliases: [pf, pfeed]
+permissions:
+  pfc.*:
+    default: op
+    children:
+      pfc.help:
+        default: false
+      pfc.reload:
+        default: false
+      pfc.feed:
+        default: false
