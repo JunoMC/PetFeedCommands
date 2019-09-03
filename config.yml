@@ -17,4 +17,4 @@ messages:
   cmds:
     feed-usage: '&cDùng lệnh: &f/petfeed feed {player} {amount}'
     
-  feed-success: '%prefix% &aĐã hồi độ đói cho pet của &f%player%&a thành &e%amount%'
+  feed-success: '%prefix% &aĐã hồi thêm &e%amount% độ đói cho pet của &f%player%'

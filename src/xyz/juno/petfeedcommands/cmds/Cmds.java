@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import de.Keyle.MyPet.MyPetApi;
-import xyz.juno.petfeedcommands.cmds.CmdsInterface.CmdsAPI;
+import xyz.juno.lib.main.cmds.CmdsInterface.CmdsAPI;
 import xyz.juno.petfeedcommands.main.PetFeedCommands;
 import xyz.juno.petfeedcommands.main.settings.Settings;
 
@@ -44,7 +44,7 @@ public class Cmds implements CommandExecutor {
 								);
 					}
 					
-				} else CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+				} else CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, NO_PERMISSION.getPath());
 			} else {
 				List<String> msgs = PetFeedCommands.getPetFeedInstance().getConfig().getStringList(HELP_MESSAGE.getPath());
 				
@@ -70,7 +70,7 @@ public class Cmds implements CommandExecutor {
 									);
 						}
 						
-					} else CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+					} else CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, NO_PERMISSION.getPath());
 				} else {
 					List<String> msgs = PetFeedCommands.getPetFeedInstance().getConfig().getStringList(HELP_MESSAGE.getPath());
 					
@@ -89,18 +89,18 @@ public class Cmds implements CommandExecutor {
 						try {
 							PetFeedCommands.getPetFeedInstance().reloadConfig();
 						} catch (Exception ex) {
-							CmdsAPI.sender(sender).sendPath(RELOAD_ERROR.getPath());
+							CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, RELOAD_ERROR.getPath());
 						} finally {
-							CmdsAPI.sender(sender).sendPath(RELOAD_SUCCESS.getPath());
+							CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, RELOAD_SUCCESS.getPath());
 						}
-					} else CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+					} else CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, NO_PERMISSION.getPath());
 				} else {
 					try {
 						PetFeedCommands.getPetFeedInstance().reloadConfig();
 					} catch (Exception ex) {
-						CmdsAPI.sender(sender).sendPath(RELOAD_ERROR.getPath());
+						CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, RELOAD_ERROR.getPath());
 					} finally {
-						CmdsAPI.sender(sender).sendPath(RELOAD_SUCCESS.getPath());
+						CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, RELOAD_SUCCESS.getPath());
 					}
 				}
 			}
@@ -111,7 +111,7 @@ public class Cmds implements CommandExecutor {
 				if (CmdsAPI.sender(sender).isPlayer()) {
 					if (CmdsAPI.sender(sender).hasPermission(FEED.getArgumentPermission())) {
 						if (CmdsAPI.sender(sender).isMaxLength(a, 3)) {
-							CmdsAPI.sender(sender).sendPath(FEED_USAGE.getPath());
+							CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, FEED_USAGE.getPath());
 						}
 						
 						if (CmdsAPI.sender(sender).isLength(a, 3)) {
@@ -133,10 +133,10 @@ public class Cmds implements CommandExecutor {
 										.replaceAll("(\\%amount%)", a[2]);
 								
 								CmdsAPI.sender(sender).send(FEED_SUCCESSS);
-								MyPetApi.getMyPetManager().getMyPet(p).setSaturation(amount);
+								MyPetApi.getMyPetManager().getMyPet(p).setSaturation(MyPetApi.getMyPetManager().getMyPet(p).getSaturation() + amount);
 							}
 						}
-					} else CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+					} else CmdsAPI.sender(sender).sendPath(PetFeedCommands.getPetFeedInstance(), prefix, NO_PERMISSION.getPath());
 				} else {
 					String _name = a[1];
 					double amount = Double.valueOf(a[2]);
@@ -156,7 +156,7 @@ public class Cmds implements CommandExecutor {
 								.replaceAll("(\\%amount%)", a[2]);
 						
 						CmdsAPI.sender(sender).send(FEED_SUCCESSS);
-						MyPetApi.getMyPetManager().getMyPet(p).setSaturation(amount);
+						MyPetApi.getMyPetManager().getMyPet(p).setSaturation(MyPetApi.getMyPetManager().getMyPet(p).getSaturation() + amount);
 					}
 				}
 			}
